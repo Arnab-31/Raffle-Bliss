@@ -8,6 +8,8 @@ const router = express.Router();
 router.post('/event', eventController.createEvent)
 router.get('/events', eventController.getAllEvents)
 router.get('/event', eventController.nextEvent)
+router.get('/winner/:id', eventController.winner)
+router.get('/winners', eventController.allWinners)
 
 router.use(authController.isLoggedIn);
 
