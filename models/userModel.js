@@ -44,7 +44,8 @@ userSchema.pre('save', async function(next){
     next()
 })
 
-userSchema.methods.toJSON = function() {      // used to remove private data from JSON response
+//used to remove private data from JSON response
+userSchema.methods.toJSON = function() {     
     const userObject = this.toObject()
 
     delete userObject.password
@@ -53,7 +54,8 @@ userSchema.methods.toJSON = function() {      // used to remove private data fro
     return userObject
 }
 
-userSchema.methods.generateAuthToken = async function() {                   // create the auth token
+ //create the auth token
+userSchema.methods.generateAuthToken = async function() {                  
     const token = jwt.sign({_id: this._id.toString() }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES_IN,
     })
@@ -64,7 +66,8 @@ userSchema.methods.generateAuthToken = async function() {                   // c
     return token;
 }
 
-userSchema.statics.findByCredentials = async(email, password) => {         // function used for checking Credentials
+//function used for checking Credentials of the user
+userSchema.statics.findByCredentials = async(email, password) => {       
     const user = await User.findOne({email})
     
     if(!user){
