@@ -53,7 +53,7 @@ userSchema.methods.toJSON = function() {      // used to remove private data fro
     return userObject
 }
 
-userSchema.methods.generateAuthToken = async function() {                     
+userSchema.methods.generateAuthToken = async function() {                   // create the auth token
     const token = jwt.sign({_id: this._id.toString() }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES_IN,
     })
@@ -64,7 +64,7 @@ userSchema.methods.generateAuthToken = async function() {
     return token;
 }
 
-userSchema.statics.findByCredentials = async(email, password) => {         // .statics is used for fucntions which is going to used by models
+userSchema.statics.findByCredentials = async(email, password) => {         // function used for checking Credentials
     const user = await User.findOne({email})
     
     if(!user){

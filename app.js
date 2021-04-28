@@ -5,7 +5,8 @@ const eventRoutes = require('./routes/eventRouter');
 const app = express();
 
 app.use(express.json());
-app.use(userRoutes);
+
 app.use(eventRoutes);
+app.use(userRoutes);
 
 module.exports = app;

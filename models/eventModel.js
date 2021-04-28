@@ -35,7 +35,7 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-
+//chooseing a winner
 eventSchema.methods.chooseWinner = async function() {                     
     
     var curDate = new Date();
@@ -43,40 +43,33 @@ eventSchema.methods.chooseWinner = async function() {
     var hourGap = this.time.getHours() - curDate.getHours();
     var minGap =  this.time.getMinutes() - curDate.getMinutes();
 
-    if(hourGap > 0 || (hourGap == 0 && minGap > 0)){   //event is on current Day but at a later time so we dont adjust day gap if it is 0
+    ///event is on current Day but at a later time so we dont adjust day gap if it is 0
+    if(hourGap > 0 || (hourGap == 0 && minGap > 0)){   
         if(dayGap < 0 )  dayGap = dayGap + 7;
     }else{
         if(dayGap <= 0 ) dayGap = dayGap + 7;
     }
          
-
-    console.log(dayGap + " " + hourGap + " " + minGap);
     var interval = (dayGap * 86400000) + (hourGap * 3600000) + (minGap * 60000);
-    console.log(interval)
     const id = this._id;
-    
     const findWinner = async () => {
-        console.log(interval)
-            console.log("Trying to find winner")
+       
             const events = await Event.find({_id: id});
             const event = events[0];
             if(event.participants.length > 0){
-                console.log("Selecting winner")
                 var winnerIndex = getRandomInt(event.participants.length);
                 event.winner = event.participants[winnerIndex];
                 event.participants = [];
-                console.log("Winner found - " + event.winner)
             }
      
             event.time.setDate(event.time.getDate() + 7)
             event.markModified('time');
             await event.save();
     
-            interval = 7 * 86400000;
     }
 
     setTimeout( findWinner, interval);              //event occours for first time
-    setInterval( findWinner, 7 * 86400000);         //after that event repeats after every 7 days
+    setInterval( findWinner, 7 * 86400000);         //after first occourance event repeats after every 7 days
 }
 
 

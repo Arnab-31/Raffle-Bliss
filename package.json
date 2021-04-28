@@ -4,6 +4,7 @@
   "description": "lucky draw raffle",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "dev": "env-cmd -f ./config/dev.env nodemon server.js"
   },
   "repository": {
