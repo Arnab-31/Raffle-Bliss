@@ -61,7 +61,7 @@ const isLoggedIn = async(req, res, next)=> {
         next()
     }catch(e){
         console.log(e);
-        res.status(401).send(e)
+        res.status(401).send({error: "You are not logged in! Kindly login first"})
     }
 
 }
