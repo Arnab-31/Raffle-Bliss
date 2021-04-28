@@ -74,7 +74,7 @@ const logout = async(req,res)=>{
         })
         await req.user.save();
 
-        res.send()
+        res.send({"msg": "Successfully logged out"})
     }catch(e){
         res.status(500).send(e)
     }
@@ -85,7 +85,7 @@ const logoutAll = async(req,res)=>{
     try{
         req.user.tokens = []
         await req.user.save();
-        res.send()
+        res.send({"msg": "Successfully logged out from all devices"})
     }catch(e){
         res.status(500).send(e)
     }
