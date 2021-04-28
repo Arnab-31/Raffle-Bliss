@@ -7,9 +7,9 @@ Live Demo of API: https://raffle-bliss-by-arnab.herokuapp.com
 
 ### Create User - (POST) /signup
 
-Use - Create a user account
-Protection - None
-Constraints - Email needs to be unique for every user
+Use - Create a user account. 
+Protection - None. 
+Constraints - Email needs to be unique for every user. 
 
 
 Request Body 
@@ -36,7 +36,7 @@ Success Response
 ```
 ### Login User - (POST) /login
 
-Use - User can login using email and password
+Use - User can login using email and password.
 Protection - None
 
 
@@ -66,7 +66,7 @@ Success Response
 
 ### Update User Profile - (PATCH) /update
 
-Use - Update the profile of a user
+Use - Update the profile of a user.
 Protection - User must be authenticated
 
 
@@ -91,19 +91,19 @@ Success Response
 
 ### User Logout  - (POST) /logout
 
-Use - Logs out a user
+Use - Logs out a user.
 Protection - User must be authenticated
 
 
 Success Response
 ```
-{{
+{
     "msg": "Successfully logged out"
 }
 ```
 ### User Logout from All devices - (POST) /logoutAll
 
-Use - Logs out a user from all devices
+Use - Logs out a user from all devices.
 Protection - User must be authenticated
 
 
@@ -116,7 +116,7 @@ Success Response
 
 ### Create Event - (POST) /event
 
-Use - Create a new lucky draw event
+Use - Create a new lucky draw event.
 Protection - User must be authenticated
 
 
@@ -149,8 +149,8 @@ Success Response (time contains the Date object which stores the date and time w
 
 ### Draw Ticket - (POST) /draw/:id
 
-Use - Draw ticket in an event
-Protection - User must be authenticated
+Use - Draw ticket in an event.
+Protection - User must be authenticated.
 Constraints - One user can not draw more than one ticket in an event
 
 
@@ -163,7 +163,7 @@ Success Response (ticket conatains a unique number assigned to each participant 
 
 ### Next Event - (GET) /event
 
-Use - Get the nearest event from the current time
+Use - Get the nearest event from the current time.
 Protection - None
 
 Success Response 
@@ -183,7 +183,7 @@ Success Response
 
 ### All Events - (GET) /events
 
-Use - Get all upcoming events 
+Use - Get all upcoming events.
 Protection - None
 
 Success Response 
@@ -214,7 +214,7 @@ Success Response
 
 ### Winner - (GET) /winner/:id
 
-Use - Get the winner of the event having the given id
+Use - Get the winner of the event having the given id.
 Protection - None
 
 Success Response 
@@ -227,7 +227,7 @@ Success Response
 
 ### All Winners - (GET) /winners
 
-Use - Get all winners of the last week
+Use - Get all winners of the last week.
 Protection - None
 
 Success Response 
