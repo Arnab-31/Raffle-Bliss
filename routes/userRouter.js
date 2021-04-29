@@ -11,11 +11,11 @@ router.get('/', (req,res)=>{
 router.post('/signup', authController.signup)
 router.post('/login', authController.login)
 
-router.use(authController.isLoggedIn);                           //routes after this point needs authentication
+//router.use(authController.isLoggedIn);                           //routes after this point needs authentication
 
-router.post('/logout', authController.logout)
-router.post('/logoutAll', authController.logoutAll)
-router.patch('/update',authController.userUpdate)
+router.post('/logout', authController.isLoggedIn,  authController.logout)
+router.post('/logoutAll',authController.isLoggedIn,  authController.logoutAll)
+router.patch('/update', authController.isLoggedIn, authController.userUpdate)
 
 
 module.exports = router;
